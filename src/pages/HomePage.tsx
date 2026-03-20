@@ -18,7 +18,7 @@ const SERVICES = [
     icon: Flame,
     path: '/heating',
     desc: 'Furnaces, boilers & heat pumps. Fast repair with upfront pricing. Keep warm all winter.',
-    img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=800&auto=format&fit=crop',
+    img: 'https://www.centralairllc.com/app/uploads/2022/11/FurnRepair-45832271-808x606-1.jpg',
   },
   {
     title: 'Cooling',
