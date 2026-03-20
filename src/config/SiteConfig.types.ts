@@ -163,4 +163,11 @@ export interface SiteConfig {
   // ─── Footer ──────────────────────────────────────────────
   footerTagline: string;
   footerAwards: string;             // "Best HVAC in Danbury — Expertise.com 2021 · Google Rating 4.9 ⭐"
+
+  // ─── Social Media (optional) ─────────────────────────────
+  social?: {
+    facebook?: string;
+    instagram?: string;
+    twitter?: string;
+  };
 }

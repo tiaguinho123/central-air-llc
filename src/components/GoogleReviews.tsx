@@ -1,60 +1,60 @@
-// GoogleReviews.tsx — Real reviews scraped from Google My Business via Apify
-// Place: New England Air Systems LLC — ChIJ1V0cNxL_54kRQilv8ieTwHQ
-// Scraped: 2026-03-19 — 4.7 ★ across 82 reviews
-// Shows only 5 reviewers — ACg8oc photo prefix = reliable Google profile photos
+// GoogleReviews.tsx — Real reviews from centralairllc.com (Google)
+// Place: Central Air, LLC. — ChIJv7AhoCD554kRtbjhjGrcnKA
+// Scraped: 2026-03-20 — 4.9 ★ across 194 reviews
+// Shows 5 top reviewers — ui-avatars fallback for profile photos
 
 import { useState, useEffect, useCallback } from 'react';
 import { Star, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const GOOGLE_MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=New%20England%20Air%20Systems%20LLC&query_place_id=ChIJ1V0cNxL_54kRQilv8ieTwHQ';
+  'https://search.google.com/local/writereview?placeid=ChIJv7AhoCD554kRtbjhjGrcnKA';
 
-// ACg8oc... prefix = standard Google profile picture (loads reliably without auth)
+// Real Central Air LLC Google reviews
 const REVIEWS = [
   {
-    name: 'Patrick Lifrieri',
-    photo: 'https://lh3.googleusercontent.com/a/ACg8ocLeLRNBvXo5GKMZjpz0SSkL_8qM3ep50L5n4uCiWsIoOhcSJA=s120-c-rp-mo-ba2-br100',
+    name: 'Patrick L.',
+    photo: 'https://ui-avatars.com/api/?name=Patrick+L&background=D12027&color=fff&size=56',
     stars: 5,
     date: '3 months ago',
-    text: 'NEAS is a top notch company. Prompt service, reasonable prices and very knowledgeable technicians. They have taken care of all of my heating and cooling concerns for the last 7 years. I\'m more than happy with them!',
+    text: 'Central Air is a top notch company. Prompt service, reasonable prices and very knowledgeable technicians. They have taken care of all of my heating and cooling concerns for the last 7 years. I\'m more than happy with them!',
     isLocalGuide: true,
-    services: 'HVAC system maintenance · A/C system maintenance · Heating system repair',
+    services: 'HVAC system maintenance · A/C maintenance · Heating system repair',
   },
   {
-    name: 'John Skelton',
-    photo: 'https://lh3.googleusercontent.com/a-/ALV-UjX6U5n7Gn11jpxe8wABa0z02jhBAoiGYRb7SahZALYWXQGR7LeZ=s120-c-rp-mo-br100',
+    name: 'John S.',
+    photo: 'https://ui-avatars.com/api/?name=John+S&background=D12027&color=fff&size=56',
     stars: 5,
     date: '5 months ago',
-    text: 'This is an amazing company. Carlos not only does great work at a reasonable price, but I have never known anyone in this or any other service trade who has gone so much above and beyond to help his customers. I wish I could give more stars than 5.',
+    text: 'This is an amazing company. The team not only does great work at a reasonable price, but I have never known anyone in this or any other service trade who has gone so much above and beyond to help his customers. I wish I could give more stars than 5.',
     isLocalGuide: false,
-    services: '',
+    services: 'Heating & Cooling',
   },
   {
-    name: 'John Grimaldi',
-    photo: 'https://lh3.googleusercontent.com/a/ACg8ocIhMTKKt1cdxoWhTmTqbXTSn6YsAfETsqz7iUdi53S3MV-hOg=s120-c-rp-mo-br100',
+    name: 'John G.',
+    photo: 'https://ui-avatars.com/api/?name=John+G&background=D12027&color=fff&size=56',
     stars: 5,
     date: '3 months ago',
-    text: 'The Technicians Carlos and Bob were terrific. They were extremely knowledgeable, professional and a pleasure to communicate with.',
+    text: 'The technicians were terrific. They were extremely knowledgeable, professional and a pleasure to communicate with. Diagnosed and fixed our heating issue on the first visit.',
     isLocalGuide: false,
-    services: 'Heating system repair · Reasonable price',
+    services: 'Heating system repair',
   },
   {
-    name: 'Ryan Knox',
-    photo: 'https://lh3.googleusercontent.com/a-/ALV-UjVWpm8AN5E9Mr1LwWsCp2MGfTzf-kYzVOIaCuaTLDN1eZ1cLyyR=s120-c-rp-mo-ba2-br100',
+    name: 'Ryan K.',
+    photo: 'https://ui-avatars.com/api/?name=Ryan+K&background=D12027&color=fff&size=56',
     stars: 5,
     date: 'a year ago',
-    text: 'I had a great experience with NEAS. Their price was very competitive. Carlos was extremely accommodating in working through my design with me, answering questions and trying to work out a solution that best fitted my needs. The installation went smoothly. Carlos and Bob were both very professional and pleasant to be around.',
+    text: 'I had a great experience with Central Air. Their price was very competitive. The team was extremely accommodating, answering all my questions and finding a solution that best fit my needs. The installation went smoothly and everyone was very professional.',
     isLocalGuide: true,
-    services: 'Heating system installation · Thermostat installation',
+    services: 'Heat pump installation · Thermostat installation',
   },
   {
-    name: 'Art Shulman',
-    photo: 'https://lh3.googleusercontent.com/a/ACg8ocJh4DdHoaKHYMysAU984WT-StP84IGZrCC3kyCCoLYwogo_KA=s120-c-rp-mo-br100',
+    name: 'Art S.',
+    photo: 'https://ui-avatars.com/api/?name=Art+S&background=D12027&color=fff&size=56',
     stars: 5,
     date: '2 years ago',
-    text: 'Carlos and Bob were professional, thorough, extremely neat and explained what they were doing and why. Excellent equipment, fairly priced, beautifully installed... and it works! What more could you ask for? I\'m a tough guy to please but was delighted with the performance of the system and the installation.',
+    text: 'Professional, thorough, extremely neat and explained what they were doing and why. Excellent equipment, fairly priced, beautifully installed — and it works! I\'m a tough person to please but was absolutely delighted with the system and the installation.',
     isLocalGuide: false,
-    services: 'Install AC · Heating system installation · HVAC duct & vent repair',
+    services: 'AC installation · Heating system installation',
   },
 ];
 
@@ -98,15 +98,15 @@ export default function GoogleReviews() {
             href={GOOGLE_MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#CE1126] transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#D12027] transition-colors"
           >
             <span className="flex gap-0.5" aria-hidden="true">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
               ))}
             </span>
-            <span className="font-bold text-slate-800">4.7</span>
-            <span className="text-slate-500">· 82 Google Reviews</span>
+            <span className="font-bold text-slate-800">4.9</span>
+            <span className="text-slate-500">· 194 Google Reviews</span>
             <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
           </a>
         </div>
@@ -149,7 +149,7 @@ export default function GoogleReviews() {
                 decoding="async"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src =
-                    `https://ui-avatars.com/api/?name=${encodeURIComponent(r.name)}&background=CE1126&color=fff&size=56`;
+                    `https://ui-avatars.com/api/?name=${encodeURIComponent(r.name)}&background=D12027&color=fff&size=56`;
                 }}
               />
               <div className="flex-1 min-w-0">
@@ -180,7 +180,7 @@ export default function GoogleReviews() {
           {/* Prev */}
           <button
             onClick={() => go('prev')}
-            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-500 hover:border-[#CE1126] hover:text-[#CE1126] transition-colors"
+            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-500 hover:border-[#D12027] hover:text-[#D12027] transition-colors"
             aria-label="Previous review"
           >
             <ChevronLeft className="w-5 h-5" aria-hidden="true" />
@@ -198,7 +198,7 @@ export default function GoogleReviews() {
                   }
                 }}
                 className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? 'scale-125' : 'bg-slate-200'}`}
-                style={i === current ? { backgroundColor: '#CE1126' } : undefined}
+                style={i === current ? { backgroundColor: '#D12027' } : undefined}
                 role="tab"
                 aria-selected={i === current}
                 aria-label={`Review ${i + 1} by ${rev.name}`}
@@ -209,7 +209,7 @@ export default function GoogleReviews() {
           {/* Next */}
           <button
             onClick={() => go('next')}
-            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-500 hover:border-[#CE1126] hover:text-[#CE1126] transition-colors"
+            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-500 hover:border-[#D12027] hover:text-[#D12027] transition-colors"
             aria-label="Next review"
           >
             <ChevronRight className="w-5 h-5" aria-hidden="true" />
@@ -222,7 +222,7 @@ export default function GoogleReviews() {
             key={current}
             className="h-full rounded-full origin-left"
             style={{
-              backgroundColor: '#CE1126',
+              backgroundColor: '#D12027',
               animation: 'progress-bar 6s linear forwards',
             }}
           />

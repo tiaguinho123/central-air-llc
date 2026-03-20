@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { SiteConfigProvider } from './config/SiteConfigContext.tsx';
-import { config } from './config/neas.config.ts';
+import { config } from './config/centralair.config.ts';
 
 // ─── To clone for a new client ───────────────────────────────
 // 1. Duplicate neas.config.ts → e.g. evolution.config.ts
