@@ -3,7 +3,7 @@ import { Phone, DollarSign, CreditCard, CheckCircle, Zap, ShieldCheck } from 'lu
 import { Link } from 'react-router-dom';
 import { useSiteConfig } from '../config/SiteConfigContext';
 
-const LENNOX_LOGO = 'https://www.centralairllc.com/app/uploads/sites/51/2023/03/LennoxLengthOfDealershipAward.png';
+const LENNOX_LOGO = 'https://www.centralairllc.com/app/uploads/sites/51/2022/10/Milestone-Award-5-1.jpg';
 
 const BENEFITS = [
   { icon: DollarSign, text: 'Up to $1,800 in Lennox® Rebates on qualifying systems' },

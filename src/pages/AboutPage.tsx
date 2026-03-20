@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSiteConfig } from '../config/SiteConfigContext';
 
 const TRUCK_IMAGE = 'https://www.centralairllc.com/app/uploads/sites/51/2026/03/Central-Air-truck.png';
-const LENNOX_BADGE = 'https://www.centralairllc.com/app/uploads/sites/51/2023/03/LennoxLengthOfDealershipAward.png';
+const LENNOX_BADGE = 'https://www.centralairllc.com/app/uploads/sites/51/2022/10/Milestone-Award-5-1.jpg';
 
 const CERTIFICATIONS = [
   { icon: Award, title: 'NATE & ICE Certified', sub: 'Industry\'s Highest Technical Standard' },

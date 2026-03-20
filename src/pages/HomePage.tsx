@@ -10,7 +10,7 @@ import GoogleReviews from '../components/GoogleReviews';
 import FAQ from '../components/FAQ';
 
 const HERO_IMAGE = 'https://www.centralairllc.com/app/uploads/sites/51/2026/03/Central-Air-truck.png';
-const LENNOX_AWARD = 'https://www.centralairllc.com/app/uploads/sites/51/2023/03/LennoxLengthOfDealershipAward.png';
+const LENNOX_AWARD = 'https://www.centralairllc.com/app/uploads/sites/51/2022/10/Milestone-Award-5-1.jpg';
 
 const SERVICES = [
   {
@@ -18,7 +18,7 @@ const SERVICES = [
     icon: Flame,
     path: '/heating',
     desc: 'Furnaces, boilers & heat pumps. Fast repair with upfront pricing. Keep warm all winter.',
-    img: 'https://www.centralairllc.com/app/uploads/2022/11/HeatPumpInstall-400.jpg',
+    img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=800&auto=format&fit=crop',
   },
   {
     title: 'Cooling',
@@ -178,11 +178,11 @@ export default function HomePage() {
                     style={{ backgroundColor: red }}
                   >
                     <Calendar className="w-5 h-5" aria-hidden="true" />
-                    Get Service Today — It's Free to Estimate
+                    Request Service
                   </Link>
                   <a
                     href={`tel:${phone}`}
-                    className="inline-flex items-center justify-center gap-2 px-7 py-4 text-white font-bold rounded-lg text-base border border-white/50 hover:bg-white/15 transition-all"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-4 text-white font-bold rounded-lg text-base border border-white/50 hover:bg-white/15 transition-all whitespace-nowrap"
                   >
                     <Phone className="w-5 h-5" aria-hidden="true" />
                     {phoneFormatted}
@@ -192,7 +192,7 @@ export default function HomePage() {
                 {/* Micro-trust line below CTAs */}
                 <p className="text-white/45 text-xs mt-4 flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
-                  Free estimates on new installs · All work backed by manufacturer warranty
+                  Free estimates on new installs &middot; All work backed by manufacturer warranty
                 </p>
               </motion.div>
             </div>
