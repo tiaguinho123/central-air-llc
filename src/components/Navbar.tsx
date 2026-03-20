@@ -103,7 +103,7 @@ export default function Navbar() {
           {/* ─── Phone CTA ─── */}
           <a
             href={`tel:${cfg.phone}`}
-            className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-colors shadow"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-colors shadow"
             style={{ backgroundColor: '#D12027' }}
           >
             <Phone className="w-4 h-4" aria-hidden="true" />
@@ -112,7 +112,7 @@ export default function Navbar() {
 
           {/* ─── Mobile Toggle ─── */}
           <button
-            className="lg:hidden p-2 text-slate-700"
+            className="md:hidden p-2 text-slate-700"
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -124,7 +124,7 @@ export default function Navbar() {
 
       {/* ─── Mobile Menu ─── */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-100 px-4 py-4 shadow-lg">
+        <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 shadow-lg">
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
             <NavLink to="/" end className={navLinkClass}>HOME</NavLink>
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-3 mb-1 px-1">Services</p>
