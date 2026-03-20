@@ -4,7 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { useSiteConfig } from '../config/SiteConfigContext';
 
-const NEAS_LOGO_URL = 'https://neas-hvac.com/wp-content/uploads/2018/11/NEAS-LOGO.png';
+const CENTRAL_AIR_LOGO_URL = 'https://www.centralairllc.com/app/uploads/sites/51/2023/03/CentralAirLLC-1.png';
 
 const serviceLinks = [
   { label: 'Heating', path: '/heating' },
@@ -34,8 +34,8 @@ export default function Navbar() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-semibold transition-colors px-1 pb-1 border-b-2 ${
       isActive
-        ? 'text-[#CE1126] border-[#CE1126]'
-        : 'text-slate-700 border-transparent hover:text-[#CE1126]'
+        ? 'text-[#D12027] border-[#D12027]'
+        : 'text-slate-700 border-transparent hover:text-[#D12027]'
     }`;
 
   return (
@@ -44,11 +44,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
 
           {/* ─── Real NEAS Logo ─── */}
-          <Link to="/" className="flex-shrink-0" aria-label="New England Air Systems — Home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <Link to="/" className="flex-shrink-0" aria-label="Central Air LLC — Home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img
-              src={NEAS_LOGO_URL}
-              alt="New England Air Systems, LLC — Heating & Air Conditioning"
-              className="h-16 w-auto object-contain"
+              src={CENTRAL_AIR_LOGO_URL}
+              alt="Central Air, LLC. — Heating & Air Conditioning"
+              className="h-14 w-auto object-contain"
               fetchPriority="high"
             />
           </Link>
@@ -66,8 +66,8 @@ export default function Navbar() {
               <button
                 className={`text-sm font-semibold flex items-center gap-1 pb-1 border-b-2 transition-colors ${
                   location.pathname.includes('/heating') || location.pathname.includes('/cooling') || location.pathname.includes('/indoor') || location.pathname.includes('/comfort')
-                    ? 'text-[#CE1126] border-[#CE1126]'
-                    : 'text-slate-700 border-transparent hover:text-[#CE1126]'
+                    ? 'text-[#D12027] border-[#D12027]'
+                    : 'text-slate-700 border-transparent hover:text-[#D12027]'
                 }`}
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
@@ -82,7 +82,7 @@ export default function Navbar() {
                       to={s.path}
                       className={({ isActive }) =>
                         `block px-4 py-2.5 text-sm font-medium transition-colors ${
-                          isActive ? 'text-[#CE1126] bg-red-50' : 'text-slate-700 hover:text-[#CE1126] hover:bg-slate-50'
+                          isActive ? 'text-[#D12027] bg-red-50' : 'text-slate-700 hover:text-[#D12027] hover:bg-slate-50'
                         }`
                       }
                     >
@@ -101,8 +101,8 @@ export default function Navbar() {
           {/* ─── Phone CTA ─── */}
           <a
             href={`tel:${cfg.phone}`}
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-colors shadow"
-            style={{ backgroundColor: '#CE1126' }}
+            className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-colors shadow"
+            style={{ backgroundColor: '#D12027' }}
           >
             <Phone className="w-4 h-4" aria-hidden="true" />
             {cfg.phoneFormatted}
@@ -110,7 +110,7 @@ export default function Navbar() {
 
           {/* ─── Mobile Toggle ─── */}
           <button
-            className="md:hidden p-2 text-slate-700"
+            className="lg:hidden p-2 text-slate-700"
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -122,7 +122,7 @@ export default function Navbar() {
 
       {/* ─── Mobile Menu ─── */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 shadow-lg">
+        <div className="lg:hidden bg-white border-t border-slate-100 px-4 py-4 shadow-lg">
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
             <NavLink to="/" end className={navLinkClass}>HOME</NavLink>
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-3 mb-1 px-1">Services</p>
@@ -137,7 +137,7 @@ export default function Navbar() {
             <a
               href={`tel:${cfg.phone}`}
               className="mt-3 flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-bold text-white"
-              style={{ backgroundColor: '#CE1126' }}
+              style={{ backgroundColor: '#D12027' }}
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
               {cfg.phoneFormatted}
