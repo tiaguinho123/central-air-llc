@@ -1,7 +1,7 @@
 // ============================================================
 // NEAS — New England Air Systems, LLC
 // Config scraped from: neas-hvac.com on 2026-03-19
-// Real brand: Red #CE1126 + Blue #003DA5 on white background
+// Real brand: Red #D12027 + Blue #003DA5 on white background
 // Real logo: "NEAS" in red + blue wave/swoosh under the letters
 // ============================================================
 
@@ -22,7 +22,7 @@ export const config: SiteConfig = {
   // ─── Real NEAS Colors (scraped from neas-hvac.com) ───────
   colors: {
     primary: 'red-600',
-    primaryHex: '#CE1126',      // NEAS Red (logo + accent)
+    primaryHex: '#D12027',      // NEAS Red (logo + accent)
     dark: '#003DA5',            // NEAS Blue (secondary brand)
     darkHover: '#002d7a',       // Blue hover
     ctaText: '#FFFFFF',

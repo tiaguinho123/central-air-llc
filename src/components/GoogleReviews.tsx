@@ -88,7 +88,7 @@ export default function GoogleReviews() {
 
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: '#CE1126' }}>
+          <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: '#D12027' }}>
             Google Reviews
           </p>
           <h2 id="reviews-heading" className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
@@ -123,7 +123,7 @@ export default function GoogleReviews() {
             aria-label={`${r.name}'s Google review`}
           >
             {/* Quote mark */}
-            <div className="text-4xl sm:text-6xl leading-none font-serif mb-3 select-none" style={{ color: '#CE1126' }} aria-hidden="true">
+            <div className="text-4xl sm:text-6xl leading-none font-serif mb-3 select-none" style={{ color: '#D12027' }} aria-hidden="true">
               "
             </div>
 

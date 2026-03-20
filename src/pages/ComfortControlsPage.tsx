@@ -11,7 +11,7 @@ export default function ComfortControlsPage() {
       content={
         <div>
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Comfort Controls</h2>
-          <div className="w-12 h-1 rounded-full mb-8" style={{ backgroundColor: '#CE1126' }} />
+          <div className="w-12 h-1 rounded-full mb-8" style={{ backgroundColor: '#D12027' }} />
 
           <img
             src="https://neas-hvac.com/wp-content/uploads/2019/01/iComfort-S30-Lifestyle-4-1024x565-1024x565.jpg"
@@ -42,7 +42,7 @@ export default function ComfortControlsPage() {
               'Thermostat repair and replacement',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: '#CE1126' }} aria-hidden="true" />
+                <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: '#D12027' }} aria-hidden="true" />
                 <span className="text-slate-700">{item}</span>
               </li>
             ))}

@@ -35,7 +35,7 @@ export default function ServicePage({ title, subtitle, heroImage, heroImageAlt, 
       <div className="bg-slate-50 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <nav className="text-sm text-slate-500" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-[#CE1126] transition-colors">Home</Link>
+            <Link to="/" className="hover:text-[#D12027] transition-colors">Home</Link>
             <span className="mx-2">›</span>
             <span className="text-slate-700 font-medium">{title}</span>
           </nav>
@@ -53,19 +53,19 @@ export default function ServicePage({ title, subtitle, heroImage, heroImageAlt, 
             {/* Sidebar */}
             <aside className="space-y-6">
               {/* CTA Card */}
-              <div className="rounded-2xl p-6 text-white text-center shadow-lg" style={{ backgroundColor: '#CE1126' }}>
+              <div className="rounded-2xl p-6 text-white text-center shadow-lg" style={{ backgroundColor: '#D12027' }}>
                 <p className="font-bold text-xl mb-3">Request a Free Estimate</p>
                 <p className="text-white/85 text-sm mb-5">No obligation. Licensed technicians. Honest pricing.</p>
                 <Link to="/contact-us"
                   className="block w-full py-3 bg-white font-bold rounded-lg text-base transition-colors hover:bg-slate-100 mb-3"
-                  style={{ color: '#CE1126' }}
+                  style={{ color: '#D12027' }}
                 >
                   <Calendar className="w-4 h-4 inline mr-1" aria-hidden="true" />
                   Schedule Online
                 </Link>
                 <a href={`tel:${phone}`}
                   className="block w-full py-3 border-2 border-white text-white font-bold rounded-lg text-base hover:bg-white transition-colors"
-                  onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = '#CE1126'; }}
+                  onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = '#D12027'; }}
                   onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = 'white'; }}
                 >
                   <Phone className="w-4 h-4 inline mr-1" aria-hidden="true" />
@@ -90,7 +90,7 @@ export default function ServicePage({ title, subtitle, heroImage, heroImageAlt, 
                   { label: 'Comfort Controls', path: '/comfort-controls' },
                   { label: 'Financing', path: '/financing' },
                 ].map((s) => (
-                  <Link key={s.path} to={s.path} className="block px-5 py-3 border-b border-slate-100 last:border-0 text-slate-700 hover:text-[#CE1126] hover:bg-red-50/50 transition-colors text-sm font-medium">
+                  <Link key={s.path} to={s.path} className="block px-5 py-3 border-b border-slate-100 last:border-0 text-slate-700 hover:text-[#D12027] hover:bg-red-50/50 transition-colors text-sm font-medium">
                     → {s.label}
                   </Link>
                 ))}
