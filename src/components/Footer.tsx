@@ -1,20 +1,22 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useSiteConfig } from '../config/SiteConfigContext';
+
+const FOOTER_TOWNS = ['Brookfield', 'Danbury', 'Bethel', 'Newtown', 'Ridgefield', 'New Milford', 'Monroe', 'Shelton'];
 
 export default function Footer() {
   const {
     businessName, colors, phone, phoneFormatted,
     email, address, hours, license, footerTagline, footerAwards,
-    serviceAreaTowns,
   } = useSiteConfig();
 
   return (
     <footer className="border-t border-slate-800" id="footer" style={{ backgroundColor: colors.dark }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand â€” real NEAS logo image */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid md:grid-cols-4 gap-10 mb-10">
+          {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <a href="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-block mb-6">
+            <a href="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-block mb-5">
               <img
                 src="https://www.centralairllc.com/app/uploads/sites/51/2023/03/CentralAirLLC-1.png"
                 alt="Central Air, LLC. — Brookfield CT HVAC"
@@ -24,28 +26,28 @@ export default function Footer() {
               />
             </a>
             <p className="text-slate-400 max-w-sm mb-4 leading-relaxed text-sm">{footerTagline}</p>
-            <p className="text-xs text-slate-500 mb-2">{license}</p>
-            <p className="text-xs text-slate-500">Â© {new Date().getFullYear()} {businessName}, LLC. All rights reserved.</p>
+            <p className="text-xs text-slate-500 mb-1">{license}</p>
+            <p className="text-xs text-slate-500">&copy; {new Date().getFullYear()} {businessName}, LLC. All rights reserved.</p>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-xs">Contact</h4>
-            <ul className="space-y-5 text-slate-300">
+            <h4 className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Contact</h4>
+            <ul className="space-y-4 text-slate-300">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 shrink-0 mt-0.5" style={{ color: colors.primaryHex }} aria-hidden="true" />
+                <MapPin className="w-4 h-4 shrink-0 mt-0.5" style={{ color: colors.primaryHex }} aria-hidden="true" />
                 <span className="text-sm">{address.street}<br />{address.city}, {address.state} {address.zip}</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 shrink-0" style={{ color: colors.primaryHex }} aria-hidden="true" />
-                <a href={`tel:${phone}`} className="hover:text-white transition-colors font-semibold">{phoneFormatted}</a>
+                <Phone className="w-4 h-4 shrink-0" style={{ color: colors.primaryHex }} aria-hidden="true" />
+                <a href={`tel:${phone}`} className="hover:text-white transition-colors font-semibold text-sm">{phoneFormatted}</a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 shrink-0" style={{ color: colors.primaryHex }} aria-hidden="true" />
+                <Mail className="w-4 h-4 shrink-0" style={{ color: colors.primaryHex }} aria-hidden="true" />
                 <a href={`mailto:${email}`} className="hover:text-white transition-colors text-sm">{email}</a>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="w-5 h-5 shrink-0 mt-0.5" style={{ color: colors.primaryHex }} aria-hidden="true" />
+                <Clock className="w-4 h-4 shrink-0 mt-0.5" style={{ color: colors.primaryHex }} aria-hidden="true" />
                 <div className="text-sm">
                   <p>{hours.weekdays}</p>
                   <p>{hours.saturday}</p>
@@ -57,24 +59,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Service Area (Pattern 8) */}
+          {/* Service Area — compact: top 8 towns only */}
           <div>
-            <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-xs">Service Area</h4>
-            <ul className="grid grid-cols-2 gap-x-3 gap-y-2" aria-label="Towns we serve">
-              {serviceAreaTowns.map((town) => (
+            <h4 className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Service Area</h4>
+            <ul className="space-y-1.5" aria-label="Towns we serve">
+              {FOOTER_TOWNS.map((town) => (
                 <li key={town}>
-                  <a href="#contact" className="text-sm text-slate-400 hover:text-amber-400 transition-colors">
-                    {town}, {/* state auto-appended if needed */}CT
-                  </a>
+                  <span className="text-sm text-slate-400">{town}, CT</span>
                 </li>
               ))}
+              <li className="pt-2">
+                <Link
+                  to="/"
+                  className="text-xs font-medium hover:opacity-80 transition-opacity"
+                  style={{ color: colors.primaryHex }}
+                >
+                  + Fairfield County &amp; Westchester, NY
+                </Link>
+              </li>
             </ul>
             <p className="text-xs text-slate-500 mt-4">
-              Don't see your town?{' '}
+              Don&apos;t see your town?{' '}
               <a href={`tel:${phone}`} className="hover:opacity-80" style={{ color: colors.primaryHex }}>
                 Call us
-              </a>{' '}
-              â€” we likely serve it.
+              </a>
             </p>
           </div>
         </div>
