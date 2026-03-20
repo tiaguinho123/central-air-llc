@@ -16,9 +16,9 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <a href="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-block mb-6">
               <img
-                src="https://neas-hvac.com/wp-content/uploads/2018/11/NEAS-LOGO.png"
-                alt="New England Air Systems LLC"
-                className="h-16 object-contain brightness-0 invert"
+                src="https://www.centralairllc.com/app/uploads/sites/51/2023/03/CentralAirLLC-1.png"
+                alt="Central Air, LLC. — Brookfield CT HVAC"
+                className="h-12 object-contain"
                 loading="lazy"
                 decoding="async"
               />

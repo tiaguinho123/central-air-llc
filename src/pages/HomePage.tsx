@@ -1,80 +1,102 @@
 import { motion } from 'motion/react';
-import { Phone, Calendar, Star, AlertCircle } from 'lucide-react';
+import { Phone, Calendar, Star, Flame, Snowflake, Wind, Thermometer, ClipboardList, BadgeCheck, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSiteConfig } from '../config/SiteConfigContext';
 import TrustBadges from '../components/TrustBadges';
 import GoogleReviews from '../components/GoogleReviews';
 
-// Real NEAS images scraped from neas-hvac.com
-// Hero: the ACTUAL building & van photo shown on their homepage
-const NEAS_HERO_IMAGE =
-  'https://neas-hvac.com/wp-content/uploads/2018/11/462833_280179332059834_678440108_o.jpg';
+// Real Central Air LLC images
+const HERO_IMAGE = 'https://www.centralairllc.com/app/uploads/sites/51/2026/03/Central-Air-truck.png';
+const LENNOX_AWARD = 'https://www.centralairllc.com/app/uploads/sites/51/2023/03/LennoxLengthOfDealershipAward.png';
 
-const services = [
+const SERVICES = [
   {
     title: 'Heating',
-    img: 'https://neas-hvac.com/wp-content/uploads/2019/01/HEATING.jpg',
+    icon: Flame,
     path: '/heating',
-    desc: 'Service and installation of oil and gas fired furnaces, heat pump systems, and boilers.',
+    desc: 'Furnace repair, maintenance & installation. We service all major makes and keep your home warm all winter.',
+    img: 'https://images.unsplash.com/photo-1631700611307-37dbcb89ef7e?q=80&w=800&auto=format&fit=crop',
   },
   {
     title: 'Cooling',
-    img: 'https://neas-hvac.com/wp-content/uploads/2019/01/Cooling.jpg',
+    icon: Snowflake,
     path: '/cooling',
-    desc: 'Precise temperature control, ideal humidity levels, and peak efficiency year-round.',
+    desc: 'Central AC repair, maintenance & installation. Save up to 50% on cooling costs with modern high-SEER systems.',
+    img: 'https://images.unsplash.com/photo-1562614757-bd2c5614d800?q=80&w=800&auto=format&fit=crop',
+  },
+  {
+    title: 'Heat Pumps',
+    icon: Thermometer,
+    path: '/heat-pumps',
+    desc: 'Efficient year-round heating & cooling. Heat pump installation, repair & maintenance.',
+    img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop',
   },
   {
     title: 'Indoor Air Quality',
-    img: 'https://neas-hvac.com/wp-content/uploads/2019/01/180404-better-stock-woman-blowing-nose-ew-1250p_099d7e00064bb4e46bb983b8ce7e3f24.fit-760w.jpg',
+    icon: Wind,
     path: '/indoor-air-quality',
-    desc: 'Air purification, filtration, and humidity-control systems for a healthier home.',
+    desc: 'Air audits, HEPA filtration, UV germicidal lights & humidity control for a healthier home.',
+    img: 'https://images.unsplash.com/photo-1586105449897-20b5efeb3233?q=80&w=800&auto=format&fit=crop',
   },
   {
-    title: 'Comfort Controls',
-    img: 'https://neas-hvac.com/wp-content/uploads/2019/01/iComfort-S30-Lifestyle-4-1024x565-1024x565.jpg',
-    path: '/comfort-controls',
-    desc: 'Smart thermostats and automation for complete HVAC management.',
+    title: 'Mini-Split Systems',
+    icon: Zap,
+    path: '/mini-splits',
+    desc: 'Ductless mini-split installation for zoned comfort in any room — without existing ductwork.',
+    img: 'https://images.unsplash.com/photo-1499502626839-de2e85b09820?q=80&w=800&auto=format&fit=crop',
+  },
+  {
+    title: 'Service Agreements',
+    icon: ClipboardList,
+    path: '/service-agreements',
+    desc: 'Annual maintenance plans that lower energy costs, prevent breakdowns & extend equipment life.',
+    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop',
   },
 ];
 
+const WHY_ITEMS = [
+  { icon: BadgeCheck, text: 'NATE & ICE Certified Technicians' },
+  { icon: BadgeCheck, text: 'Lennox Premier Dealer — 5+ Years' },
+  { icon: BadgeCheck, text: 'Mitsubishi Diamond Contractor' },
+  { icon: BadgeCheck, text: 'BBB Accredited & ACCA Member' },
+  { icon: BadgeCheck, text: 'Free Estimates on New Installations' },
+  { icon: BadgeCheck, text: 'Serving Fairfield County since 2003' },
+];
+
 export default function HomePage() {
-  const { phone, phoneFormatted, reviews } = useSiteConfig();
+  const { phone, phoneFormatted, reviews, colors } = useSiteConfig();
+  const red = colors.primaryHex;
+  const blue = colors.dark;
 
   return (
     <div>
-      {/* ─── Financing Announcement Strip ──────────────────── */}
-      {/* Between Navbar (h-20=80px) and Hero */}
+      {/* ─── Offer Announcement Strip ── */}
       <div
         className="fixed top-20 left-0 right-0 z-40 flex items-center justify-center gap-3 px-4 py-2.5 text-white text-sm font-semibold"
-        style={{ backgroundColor: '#003DA5' }}
+        style={{ backgroundColor: blue }}
         role="banner"
-        aria-label="Financing announcement"
+        aria-label="Special offer announcement"
       >
-        <AlertCircle className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+        <Zap className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
         <span>
-          Financing Available Through{' '}
-          <strong className="underline-offset-2 underline decoration-white/60">
-            Synchrony Financial
-          </strong>{' '}
-          — Ask Us Today!
+          Up to{' '}
+          <strong className="underline decoration-white/60 underline-offset-2">$1,800 in Lennox® Rebates</strong>
+          {' '}available — Ask Us Today. Call (203) 403-6174
         </span>
       </div>
 
-      {/* ─── Hero ──────────────────────────────────────────── */}
-      {/* pt-20 (navbar) + ~40px (financing strip) = pt-28 */}
+      {/* ─── Hero ─── */}
       <section className="relative pt-28" aria-label="Hero">
-        <div className="relative overflow-hidden" style={{ height: '540px' }}>
-          {/* Real NEAS building & vans photo */}
+        <div className="relative overflow-hidden" style={{ height: '580px' }}>
           <img
-            src={NEAS_HERO_IMAGE}
-            alt="New England Air Systems — building and work vans in Danbury, CT"
+            src={HERO_IMAGE}
+            alt="Central Air LLC service truck — Brookfield, CT HVAC"
             className="w-full h-full object-cover object-center"
             fetchPriority="high"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/72 via-black/45 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-transparent" />
 
-          {/* Hero content */}
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <motion.div
@@ -88,7 +110,7 @@ export default function HomePage() {
                   href={reviews.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/25 backdrop-blur-sm mb-6"
                   aria-label={`${reviews.rating} stars — ${reviews.count} Google Reviews`}
                 >
                   <div className="flex gap-0.5" aria-hidden="true">
@@ -97,43 +119,39 @@ export default function HomePage() {
                     ))}
                   </div>
                   <span className="text-white text-sm font-semibold">
-                    {reviews.rating} ·{' '}
-                    <span className="text-amber-300">{reviews.count} Google Reviews</span>
+                    {reviews.rating} · <span className="text-amber-300">{reviews.count} Google Reviews</span>
                   </span>
                 </a>
 
-                <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">
-                  NEW ENGLAND AIR SYSTEMS
+                <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
+                  Dependable HVAC Service
                   <br />
-                  <span style={{ color: '#CE1126' }}>Heating & Air Conditioning</span>
+                  <span style={{ color: red }}>Service With Quality</span>
                 </h1>
                 <p className="text-xl text-white/90 mb-3 font-medium">
-                  Family-Owned • Danbury, CT
+                  Locally owned & operated since 2003 — Brookfield, CT
                 </p>
                 <p className="text-base text-white/75 mb-8">
-                  Serving local homeowners for more than 20 years.
+                  NATE Certified · Lennox Premier Dealer · Mitsubishi Diamond Contractor
                   <br />
-                  Sales • Service • Installation — 24 Hour Emergency Service
+                  Serving Fairfield County & Westchester, NY
                 </p>
 
-                {/* CTA Row */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     to="/contact-us"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-bold rounded-lg text-lg transition-colors shadow-lg"
-                    style={{ backgroundColor: '#CE1126' }}
+                    style={{ backgroundColor: red }}
                   >
                     <Calendar className="w-5 h-5" aria-hidden="true" />
-                    Get a Free Estimate
+                    Request Service
                   </Link>
-
-                  {/* Changed from phone number to Emergency Call 24/7 */}
                   <a
                     href={`tel:${phone}`}
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-900 font-bold rounded-lg text-lg transition-colors hover:bg-amber-50 shadow-lg border-2 border-amber-400"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-bold rounded-lg text-lg border border-white/50 hover:bg-white/15 transition-colors"
                   >
-                    <Phone className="w-5 h-5 text-red-600" aria-hidden="true" />
-                    Emergency Call 24/7
+                    <Phone className="w-5 h-5" aria-hidden="true" />
+                    {phoneFormatted}
                   </a>
                 </div>
               </motion.div>
@@ -146,52 +164,85 @@ export default function HomePage() {
       <TrustBadges />
 
       {/* ─── About Blurb ─── */}
-      <section className="py-16 bg-white border-b border-slate-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#CE1126' }}>
-            About Us
-          </p>
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-5">NEW ENGLAND AIR SYSTEMS</h2>
-          <p className="text-lg text-slate-600 mb-4 leading-relaxed">
-            NEW ENGLAND AIR SYSTEMS is a family owned heating &amp; air conditioning company
-            located in Danbury, CT.
-          </p>
-          <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            We have been servicing local homeowners for more than 20 years.
-          </p>
-          <img
-            src="https://neas-hvac.com/wp-content/uploads/2021/01/Award_2021_transparent-1.png"
-            alt="Expertise.com Best HVAC Professionals in Danbury 2021"
-            className="mx-auto h-28 object-contain"
-            loading="lazy"
-            decoding="async"
-          />
+      <section className="py-10 sm:py-16 bg-white border-b border-slate-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: red }}>
+                Service With Quality
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-5">
+                Central Air, LLC. — Brookfield's Trusted HVAC Company
+              </h2>
+              <p className="text-base text-slate-600 mb-4 leading-relaxed">
+                At Central Air LLC, heating and cooling isn't solely our job; it's our passion.
+                We strive to provide you with the top HVAC service in Fairfield County. No matter
+                the time, day or the problem, you can rely on us to get the job done correctly.
+              </p>
+              <p className="text-base text-slate-600 mb-6 leading-relaxed">
+                After all, Central Air LLC has been working in the community since 2003, bringing
+                comfort to our customers all year round.
+              </p>
+              <div className="grid grid-cols-1 gap-3 mb-6">
+                {WHY_ITEMS.map((item) => (
+                  <div key={item.text} className="flex items-center gap-3">
+                    <item.icon className="w-5 h-5 flex-shrink-0" style={{ color: red }} aria-hidden="true" />
+                    <span className="text-sm font-medium text-slate-700">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+              <Link
+                to="/about-us"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-bold text-sm transition-colors"
+                style={{ backgroundColor: red }}
+              >
+                About Us →
+              </Link>
+            </div>
+            <div className="relative">
+              <img
+                src={LENNOX_AWARD}
+                alt="Lennox Length of Dealership Award — Central Air LLC 5 Years"
+                className="w-full rounded-2xl shadow-lg object-contain bg-slate-50 p-6"
+                loading="lazy"
+                decoding="async"
+              />
+              <div
+                className="absolute -bottom-4 -left-4 px-5 py-3 rounded-xl text-white text-center shadow-lg"
+                style={{ backgroundColor: red }}
+              >
+                <div className="text-2xl font-extrabold">20+</div>
+                <div className="text-xs font-semibold opacity-90">Years of Service</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ─── Our Services ─── */}
-      <section className="py-20 bg-slate-50" id="services" aria-labelledby="services-heading">
+      {/* ─── Services Grid ─── */}
+      <section className="py-10 sm:py-16 bg-slate-50" id="services" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 id="services-heading" className="text-3xl font-extrabold text-slate-900 mb-3">
-              OUR SERVICES
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: red }}>
+              What We Do
+            </p>
+            <h2 id="services-heading" className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+              Our HVAC Services
             </h2>
-            <div
-              className="w-16 h-1 mx-auto rounded-full"
-              style={{ backgroundColor: '#CE1126' }}
-              aria-hidden="true"
-            />
+            <p className="text-slate-500 max-w-xl mx-auto text-sm">
+              Residential & light commercial heating, cooling, and air quality solutions for Fairfield County and Westchester.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((svc) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SERVICES.map((svc) => (
               <motion.div
                 key={svc.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all group"
               >
-                <div className="relative h-44 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden">
                   <img
                     src={svc.img}
                     alt={svc.title}
@@ -199,17 +250,18 @@ export default function HomePage() {
                     loading="lazy"
                     decoding="async"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <h3 className="absolute bottom-4 left-4 text-white font-bold text-lg">
-                    {svc.title}
-                  </h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent" />
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                    <svc.icon className="w-5 h-5 text-white" aria-hidden="true" />
+                    <h3 className="text-white font-bold text-lg">{svc.title}</h3>
+                  </div>
                 </div>
                 <div className="p-5">
                   <p className="text-slate-600 text-sm mb-4 leading-relaxed">{svc.desc}</p>
                   <Link
                     to={svc.path}
                     className="inline-flex items-center text-sm font-bold transition-colors"
-                    style={{ color: '#CE1126' }}
+                    style={{ color: red }}
                   >
                     Learn More →
                   </Link>
@@ -220,23 +272,94 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Animated Google Reviews — Bottom of page, before CTA ─── */}
+      {/* ─── Lennox Offer Strip ─── */}
+      <section className="py-10 sm:py-14" style={{ backgroundColor: blue }} aria-label="Current Offer">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-xs font-bold tracking-widest uppercase text-white/60 mb-2">Limited Time</p>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
+            Receive up to $1,800 in Rebates
+          </h2>
+          <p className="text-white/80 mb-2">
+            When you purchase the Lennox® Ultimate Comfort System™ <strong className="text-white">OR</strong> qualified buyers make no payments, incur no interest for 12 months when financing a new Lennox® system.
+          </p>
+          <p className="text-white/50 text-xs mb-6">(Rebate is paid in the form of a Lennox Prepaid Mastercard®)</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/financing"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-bold text-sm border-2 border-white text-white hover:bg-white transition-colors"
+              style={{ ['--hover-color' as string]: blue }}
+            >
+              View Financing Options
+            </Link>
+            <a
+              href={`tel:${phone}`}
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-bold text-sm text-white border-2 border-white/40 hover:border-white transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              {phoneFormatted}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Google Reviews ─── */}
       <GoogleReviews />
 
-      {/* ─── Emergency CTA Bar ─── */}
-      <div className="py-12" style={{ backgroundColor: '#003DA5' }}>
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-2xl font-extrabold text-white mb-2">24 Hour Emergency Service</p>
-          <p className="text-white/80 mb-6">
-            No heat or cooling? We respond fast — any time of day or night.
+      {/* ─── Service Area ─── */}
+      <section className="py-10 sm:py-16 bg-slate-50 border-t border-slate-100" aria-labelledby="area-heading">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: red }}>
+            Proudly Serving
           </p>
-          <a
-            href={`tel:${phone}`}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-lg font-bold text-white border-2 border-white hover:bg-white hover:text-[#003DA5] transition-colors"
-          >
-            <Phone className="w-5 h-5" />
-            Emergency Call 24/7 — {phoneFormatted}
-          </a>
+          <h2 id="area-heading" className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-8">
+            Brookfield and Surrounding Areas
+          </h2>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 text-sm text-slate-600">
+            {[
+              'Brookfield','Danbury','Bethel','Newtown','Ridgefield',
+              'New Milford','New Fairfield','Monroe','Shelton','Oxford',
+              'Greenwich','Stamford','Darien','Westport','Wilton',
+              'New Canaan','Norwalk','Trumbull','Bedford','Brewster',
+              'Carmel','Chappaqua','Pound Ridge','Waccabuc'
+            ].map(town => (
+              <div key={town} className="px-2 py-1.5 bg-white rounded-lg border border-slate-200 font-medium text-xs">
+                {town}
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-slate-500">
+            Not sure if we serve your area? <a href={`tel:${phone}`} className="font-semibold" style={{ color: red }}>Call us at {phoneFormatted}</a>
+          </p>
+        </div>
+      </section>
+
+      {/* ─── Final CTA ─── */}
+      <div className="py-10 sm:py-14 bg-white border-t border-slate-100 pb-24 lg:pb-8">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+            Ready to Schedule Service?
+          </h2>
+          <p className="text-slate-500 mb-6 max-w-lg mx-auto text-sm">
+            Free estimates on new installations. Call us Mon–Fri 8am–4:30pm or submit a request anytime.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/contact-us"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg text-white font-bold text-base transition-colors shadow-md"
+              style={{ backgroundColor: red }}
+            >
+              <Calendar className="w-5 h-5" />
+              Request Service Online
+            </Link>
+            <a
+              href={`tel:${phone}`}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold text-base border-2 transition-colors"
+              style={{ borderColor: red, color: red }}
+            >
+              <Phone className="w-5 h-5" />
+              {phoneFormatted}
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -9,8 +9,10 @@ const CENTRAL_AIR_LOGO_URL = 'https://www.centralairllc.com/app/uploads/sites/51
 const serviceLinks = [
   { label: 'Heating', path: '/heating' },
   { label: 'Cooling', path: '/cooling' },
+  { label: 'Heat Pumps', path: '/heat-pumps' },
+  { label: 'Mini-Splits / Ductless', path: '/mini-splits' },
   { label: 'Indoor Air Quality', path: '/indoor-air-quality' },
-  { label: 'Comfort Controls', path: '/comfort-controls' },
+  { label: 'Service Agreements', path: '/service-agreements' },
 ];
 
 export default function Navbar() {
