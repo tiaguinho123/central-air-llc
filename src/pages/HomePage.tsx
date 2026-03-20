@@ -18,42 +18,42 @@ const SERVICES = [
     icon: Flame,
     path: '/heating',
     desc: 'Furnaces, boilers & heat pumps. Fast repair with upfront pricing. Keep warm all winter.',
-    img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=800&auto=format&fit=crop',
+    img: 'https://www.centralairllc.com/app/uploads/2022/11/HeatPumpInstall-400.jpg',
   },
   {
     title: 'Cooling',
     icon: Snowflake,
     path: '/cooling',
     desc: 'Central AC repair & installation. Save up to 50% on cooling costs with modern high-SEER systems.',
-    img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop',
+    img: 'https://www.centralairllc.com/app/uploads/2022/12/46467146-ac-808x606-1.jpeg',
   },
   {
     title: 'Heat Pumps',
     icon: Thermometer,
     path: '/heat-pumps',
     desc: 'Efficient year-round heating & cooling. Mitsubishi Diamond installation & service.',
-    img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop',
+    img: 'https://www.centralairllc.com/app/uploads/2022/11/19-LNX-0617_D_7439-808x606-1.jpeg',
   },
   {
     title: 'Indoor Air Quality',
     icon: Wind,
     path: '/indoor-air-quality',
     desc: 'HEPA filtration, UV germicidal lights & humidity control. Healthier air starts here.',
-    img: 'https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=800&auto=format&fit=crop',
+    img: 'https://www.centralairllc.com/app/uploads/2022/11/19-LNX-0617_D_6624-808x606-1.jpeg',
   },
   {
     title: 'Mini-Split Systems',
     icon: Zap,
     path: '/mini-splits',
     desc: 'Ductless comfort for any room. No existing ductwork needed. Factory-authorized Mitsubishi installer.',
-    img: 'https://images.unsplash.com/photo-1697626804395-41c06ef3f7f9?q=80&w=800&auto=format&fit=crop',
+    img: 'https://www.centralairllc.com/app/uploads/2025/02/Living-Area-Male-Female-Dealer-MiniSplit-808x606-1.jpg',
   },
   {
     title: 'Service Agreements',
     icon: ClipboardList,
     path: '/service-agreements',
     desc: 'Prevent 90% of breakdowns with annual maintenance. Priority scheduling for members.',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop',
+    img: 'https://www.centralairllc.com/app/uploads/2022/11/19-LNX-0617_D_1594-svc-agrmnt-808x606-1.jpeg',
   },
 ];
 
@@ -323,6 +323,31 @@ export default function HomePage() {
               Start with a Call — {phoneFormatted}
             </a>
             <p className="text-slate-400 text-xs mt-3">Mon–Fri 8am–4:30pm · Free estimates on new installations</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── YOUTUBE VIDEO ─── */}
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-100" aria-labelledby="video-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: red }}>Lennox Award Recognition</p>
+            <h2 id="video-heading" className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+              5+ Years as a Lennox Premier Dealer
+            </h2>
+            <p className="text-slate-500 text-sm max-w-lg mx-auto">
+              Central Air LLC has been recognized by Lennox for exceptional service and commitment to our community. Watch what that means for you.
+            </p>
+          </div>
+          <div className="relative w-full rounded-2xl overflow-hidden shadow-xl" style={{ paddingTop: '56.25%' }}>
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/HTIZ9JUd1tE?rel=0&modestbranding=1"
+              title="Central Air LLC — Lennox Premier Dealer Award"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
           </div>
         </div>
       </section>

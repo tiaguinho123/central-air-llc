@@ -1,20 +1,42 @@
 import { motion } from 'motion/react';
-import { Phone, Flame, CheckCircle, Clock, Wrench, Calendar } from 'lucide-react';
+import {
+  Phone, Calendar, CheckCircle, Thermometer, Star, ArrowRight
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSiteConfig } from '../config/SiteConfigContext';
 
-const HERO_IMG = 'https://images.unsplash.com/photo-1631700611307-37dbcb89ef7e?q=80&w=1200&auto=format&fit=crop';
+// Real images from centralairllc.com
+const HERO_IMG = 'https://www.centralairllc.com/app/uploads/2022/11/FurnRepair-45832271-808x606-1.jpg';
+const SECONDARY_IMG = 'https://www.centralairllc.com/app/uploads/2022/11/VaryingComfortLevels.png';
 
-const SERVICES = [
-  { title: 'Furnace Repair', desc: 'Fast, accurate diagnosis and repair of gas and oil furnaces. We service all major brands with upfront pricing before any work begins.' },
-  { title: 'Furnace Maintenance', desc: 'Annual tune-ups that extend equipment life, catch issues early, and keep your system running at peak efficiency all season.' },
-  { title: 'Furnace Installation', desc: 'Energy-efficient new furnace installation sized correctly for your home. Lennox® and other top brands available.' },
-  { title: 'Boiler Service', desc: 'Expert boiler inspection, repair, and maintenance to keep your home warm and your hot water flowing reliably.' },
-  { title: 'Heat Pump Heating', desc: 'Heat pump repair and maintenance for year-round heating efficiency — we service all major makes and models.' },
-  { title: 'Emergency Heating', desc: 'Lost heat? We respond fast. Call us and we\'ll dispatch a NATE-certified technician as quickly as possible.' },
+const SIGNS = [
+  'No heat — furnace running but not warming the house',
+  'Furnace cycles on and off constantly (short cycling)',
+  'Unusual noises: banging, squealing, or rumbling',
+  'Yellow or flickering pilot light (should be blue)',
+  'Spike in heating bills with no change in usage',
+  'Inconsistent temperatures between rooms',
+  'System is 15+ years old and needs frequent repairs',
 ];
 
-const BRANDS = ['Lennox®', 'Mitsubishi®', 'Carrier®', 'Trane®', 'Bryant®', 'Rheem®', 'Bosch®', 'Weil-McLain®'];
+const SERVICES_LIST = [
+  {
+    title: 'Furnace Repair',
+    desc: 'Fast diagnosis and repair of gas, oil, and electric furnaces. Our NATE-certified technicians carry a full inventory of parts to fix most furnaces on the first visit.',
+  },
+  {
+    title: 'Boiler Repair & Service',
+    desc: 'Expert boiler repair and maintenance for hydronic heating systems. We service all makes and models.',
+  },
+  {
+    title: 'Furnace Installation',
+    desc: 'As a Lennox Premier Dealer, we install the most efficient, reliable furnaces available — backed by some of the best warranties in the industry.',
+  },
+  {
+    title: 'Annual Heating Tune-Up',
+    desc: 'Comprehensive 21-point inspection and cleaning to ensure your system runs safely and efficiently all winter long.',
+  },
+];
 
 export default function HeatingPage() {
   const { phone, phoneFormatted, colors } = useSiteConfig();
@@ -24,107 +46,130 @@ export default function HeatingPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="relative h-64 sm:h-80" aria-label="Heating services hero">
-        <img src={HERO_IMG} alt="HVAC heating system" className="w-full h-full object-cover" loading="eager" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
+      <section className="relative h-72 sm:h-96" aria-label="Furnace Repair hero">
+        <img
+          src={HERO_IMG}
+          alt="Central Air LLC furnace repair technician at work in Brookfield CT"
+          className="w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-transparent" />
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-3 mb-3">
-              <Flame className="w-6 h-6 text-white" style={{ color: red }} />
-              <span className="text-sm font-bold text-white/70 uppercase tracking-wider">HVAC Services</span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white">Heating Services</h1>
-            <p className="text-white/80 mt-2 text-base">Furnaces · Boilers · Heat Pumps — All Makes & Models</p>
+            <p className="text-xs font-bold text-white/60 uppercase tracking-widest mb-3">Heating Services</p>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white mb-3">
+              Furnace Repair in<br />Brookfield, CT
+            </h1>
+            <p className="text-white/80 text-base max-w-md">
+              NATE-Certified technicians. Same-day availability. All major brands serviced.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Intro */}
       <section className="py-10 sm:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: red }}>Expert Heating</p>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-5">
-            Keep Your Home Warm All Winter
-          </h2>
-          <p className="text-slate-600 leading-relaxed mb-4">
-            At Central Air LLC, our NATE and ICE certified technicians specialize in heating systems of all types and brands. Whether your furnace is making an unusual noise, your boiler needs its annual tune-up, or it's time to upgrade to a high-efficiency system, we have the expertise and the tools to get the job done right.
-          </p>
-          <p className="text-slate-600 leading-relaxed mb-6">
-            Modern furnaces last between 12 and 17 years when properly maintained. Quiet operation and energy efficiency have improved dramatically — if your system is aging, upgrading can reduce your heating bills significantly. As a Lennox Premier Dealer, we offer access to top-performing systems with industry-leading warranties.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              to="/contact-us"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-white font-bold text-sm"
-              style={{ backgroundColor: red }}
-            >
-              <Calendar className="w-4 h-4" />
-              Request Heating Service
-            </Link>
-            <a
-              href={`tel:${phone}`}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm border-2"
-              style={{ borderColor: red, color: red }}
-            >
-              <Phone className="w-4 h-4" />
-              {phoneFormatted}
-            </a>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: red }}>
+                Expert Heating Service
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-5">
+                When Your Heat Goes Out, We Show Up Fast
+              </h2>
+              <p className="text-slate-600 leading-relaxed mb-4">
+                Our certified repair technicians service all heating system makes and models — furnaces, boilers, and heat pumps. Whether you need a quick repair or a full system replacement, Central Air LLC has been the trusted heating contractor in Fairfield County since 2003.
+              </p>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                As a Lennox Premier Dealer for 5+ years, we have access to the best equipment at the most competitive prices — and we back our work with industry-leading warranties.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/contact-us"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-white font-bold text-sm"
+                  style={{ backgroundColor: red }}
+                >
+                  <Calendar className="w-4 h-4" /> Schedule Service
+                </Link>
+                <a
+                  href={`tel:${phone}`}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm border-2"
+                  style={{ borderColor: red, color: red }}
+                >
+                  <Phone className="w-4 h-4" /> {phoneFormatted}
+                </a>
+              </div>
+            </div>
+            <div>
+              <img
+                src={SECONDARY_IMG}
+                alt="Varying comfort levels — signs of a heating system problem"
+                className="w-full rounded-2xl shadow-lg"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-10 sm:py-16 bg-slate-50" aria-labelledby="heating-svcs-heading">
+      {/* Signs you need service */}
+      <section className="py-10 sm:py-16 bg-slate-50" aria-labelledby="signs-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 id="signs-heading" className="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-10">
+            7 Signs Your Furnace Needs Repair
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {SIGNS.map((sign) => (
+              <div key={sign} className="flex items-start gap-3 bg-white rounded-xl p-4 border border-slate-200">
+                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: red }} aria-hidden="true" />
+                <p className="text-sm text-slate-700">{sign}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="py-10 sm:py-16 bg-white" aria-labelledby="heating-svcs-heading">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 id="heating-svcs-heading" className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-8 text-center">
+          <h2 id="heating-svcs-heading" className="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-10">
             Our Heating Services
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {SERVICES.map((s) => (
+          <div className="grid sm:grid-cols-2 gap-5">
+            {SERVICES_LIST.map((s) => (
               <motion.div
                 key={s.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-slate-50 rounded-2xl p-6 border border-slate-200"
               >
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: `${red}15` }}>
-                  <Wrench className="w-5 h-5" style={{ color: red }} aria-hidden="true" />
-                </div>
-                <h3 className="font-bold text-slate-900 mb-2">{s.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
+                <h3 className="font-bold mb-2" style={{ color: red }}>{s.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Brands */}
-      <section className="py-10 sm:py-14 bg-white border-y border-slate-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-xs font-bold tracking-widest uppercase mb-4" style={{ color: red }}>We Service All Major Brands</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {BRANDS.map(b => (
-              <span key={b} className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold text-slate-700">{b}</span>
+      {/* NATE Certification section */}
+      <section className="py-10 sm:py-14 bg-slate-50 border-y border-slate-200" aria-labelledby="nate-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Thermometer className="w-10 h-10 mx-auto mb-4" style={{ color: red }} />
+          <h2 id="nate-heading" className="text-2xl font-extrabold text-slate-900 mb-3">
+            Why NATE Certification Matters
+          </h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-sm leading-relaxed">
+            NATE (North American Technician Excellence) certification is the HVAC industry's highest standard. All Central Air LLC technicians are NATE and ICE certified — meaning accurate diagnosis the first time, fewer repeat visits, and a heating system that runs the way it should. Most furnaces that are 12–17 years old can often be repaired cost-effectively; our techs will always give you an honest assessment.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+            {['All major brands serviced', 'Upfront pricing', 'Parts on every truck', 'Warranty on all repairs'].map(t => (
+              <span key={t} className="flex items-center gap-1.5 text-slate-700 font-medium">
+                <Star className="w-4 h-4 fill-amber-400 text-amber-400" aria-hidden="true" />{t}
+              </span>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why NATE */}
-      <section className="py-10 sm:py-16 bg-slate-50" aria-labelledby="nate-heading">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <CheckCircle className="w-6 h-6" style={{ color: red }} />
-              <h2 id="nate-heading" className="text-xl font-extrabold text-slate-900">Why NATE Certification Matters</h2>
-            </div>
-            <p className="text-slate-600 leading-relaxed mb-3">
-              NATE (North American Technician Excellence) certification is the heating and cooling industry's most recognized and respected certification program. To be NATE certified, technicians must pass rigorous, knowledge-based tests developed by a committee of HVAC industry experts.
-            </p>
-            <p className="text-slate-600 leading-relaxed">
-              When you choose Central Air LLC, every technician sent to your home is both NATE and ICE certified — ensuring your system is diagnosed correctly the first time, and repaired or installed to the highest standard.
-            </p>
           </div>
         </div>
       </section>
@@ -132,14 +177,20 @@ export default function HeatingPage() {
       {/* CTA */}
       <section className="py-12 sm:py-14 text-white text-center pb-24 lg:pb-16" style={{ backgroundColor: blue }}>
         <div className="max-w-2xl mx-auto px-4">
-          <Clock className="w-10 h-10 text-white/60 mx-auto mb-4" />
-          <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">Need Heating Help?</h2>
-          <p className="text-white/70 mb-6 text-sm">Call Mon–Fri 8am–4:30pm. Free estimates on new equipment installations.</p>
+          <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">Need Heating Repair Today?</h2>
+          <p className="text-white/70 mb-6 text-sm">Free estimates on new installations. Same-day appointments based on availability.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact-us" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold text-sm border-2 border-white text-white hover:bg-white transition-colors">
-              Request Service Online
+            <Link
+              to="/contact-us"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold text-sm bg-white transition-colors"
+              style={{ color: red }}
+            >
+              <Calendar className="w-4 h-4" /> Request Service
             </Link>
-            <a href={`tel:${phone}`} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold text-sm text-white border-2 border-white/40 hover:border-white transition-colors">
+            <a
+              href={`tel:${phone}`}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold text-sm text-white border-2 border-white/40 hover:border-white transition-colors"
+            >
               <Phone className="w-4 h-4" /> {phoneFormatted}
             </a>
           </div>

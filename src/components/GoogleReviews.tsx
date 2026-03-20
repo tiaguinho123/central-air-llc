@@ -1,60 +1,53 @@
-// GoogleReviews.tsx — Real reviews from centralairllc.com (Google)
-// Place: Central Air, LLC. — ChIJv7AhoCD554kRtbjhjGrcnKA
-// Scraped: 2026-03-20 — 4.9 ★ across 194 reviews
-// Shows 5 top reviewers — ui-avatars fallback for profile photos
-
 import { useState, useEffect, useCallback } from 'react';
-import { Star, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
-const GOOGLE_MAPS_URL =
-  'https://search.google.com/local/writereview?placeid=ChIJv7AhoCD554kRtbjhjGrcnKA';
+const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/Central+Air+LLC/@41.4624,-73.4012,15z/data=!4m8!3m7!1s0x0:0x1c2bbf1236a9b614!8m2!3d41.4624!4d-73.4012!9m1!1b1';
 
-// Real Central Air LLC Google reviews
 const REVIEWS = [
   {
-    name: 'Patrick L.',
-    photo: 'https://ui-avatars.com/api/?name=Patrick+L&background=D12027&color=fff&size=56',
+    name: 'Tarsha Mccallum',
+    photo: 'https://ui-avatars.com/api/?name=Tarsha+Mccallum&background=D12027&color=fff&size=56',
     stars: 5,
-    date: '3 months ago',
-    text: 'Central Air is a top notch company. Prompt service, reasonable prices and very knowledgeable technicians. They have taken care of all of my heating and cooling concerns for the last 7 years. I\'m more than happy with them!',
+    date: 'February 2026',
+    isLocalGuide: false,
+    services: 'Heating & HVAC Service',
+    text: 'I needed a part for our heater. Rich kept us informed with every step of the process. I was apprehensive at first, but his knowledge and patience with my questions prompted my trust. Kristopher and Ian came in and did phenomenal work. I will definitely be recommending Central Air to everyone I know.',
+  },
+  {
+    name: 'Eliana Franciosa',
+    photo: 'https://ui-avatars.com/api/?name=Eliana+Franciosa&background=224A8B&color=fff&size=56',
+    stars: 5,
+    date: 'February 2026',
+    isLocalGuide: false,
+    services: 'HVAC System Replacement',
+    text: 'We had an incredible experience with Central Air. Our furnace went out during brutal winter weather and they replaced our entire HVAC system with incredible speed and efficiency. We honestly cannot thank them enough. Will absolutely use them again for all of our HVAC needs!',
+  },
+  {
+    name: 'Joseph Nicoli',
+    photo: 'https://ui-avatars.com/api/?name=Joseph+Nicoli&background=D12027&color=fff&size=56',
+    stars: 5,
+    date: 'January 2026',
     isLocalGuide: true,
-    services: 'HVAC system maintenance · A/C maintenance · Heating system repair',
+    services: 'HVAC Repair & Maintenance � 5 Years',
+    text: 'Have been using Central Air for over 5 years now. They are always dependable and respond quickly in emergencies. All their technicians are courteous and highly qualified. I have never had a reason to use any other HVAC company and never will!',
   },
   {
-    name: 'John S.',
-    photo: 'https://ui-avatars.com/api/?name=John+S&background=D12027&color=fff&size=56',
+    name: 'Kathy Ruscoe',
+    photo: 'https://ui-avatars.com/api/?name=Kathy+Ruscoe&background=224A8B&color=fff&size=56',
     stars: 5,
-    date: '5 months ago',
-    text: 'This is an amazing company. The team not only does great work at a reasonable price, but I have never known anyone in this or any other service trade who has gone so much above and beyond to help his customers. I wish I could give more stars than 5.',
+    date: 'January 2026',
     isLocalGuide: false,
-    services: 'Heating & Cooling',
+    services: 'Furnace, Heat Pump & AC Installation',
+    text: 'Had a fantastic experience with the installation of a furnace, heat pump and air conditioner. The team was professional, clean, efficient and courteous. Would highly recommend Central Air to everyone and will use them again in the future.',
   },
   {
-    name: 'John G.',
-    photo: 'https://ui-avatars.com/api/?name=John+G&background=D12027&color=fff&size=56',
+    name: 'Jon McGerity',
+    photo: 'https://ui-avatars.com/api/?name=Jon+McGerity&background=D12027&color=fff&size=56',
     stars: 5,
-    date: '3 months ago',
-    text: 'The technicians were terrific. They were extremely knowledgeable, professional and a pleasure to communicate with. Diagnosed and fixed our heating issue on the first visit.',
+    date: 'December 2025',
     isLocalGuide: false,
-    services: 'Heating system repair',
-  },
-  {
-    name: 'Ryan K.',
-    photo: 'https://ui-avatars.com/api/?name=Ryan+K&background=D12027&color=fff&size=56',
-    stars: 5,
-    date: 'a year ago',
-    text: 'I had a great experience with Central Air. Their price was very competitive. The team was extremely accommodating, answering all my questions and finding a solution that best fit my needs. The installation went smoothly and everyone was very professional.',
-    isLocalGuide: true,
-    services: 'Heat pump installation · Thermostat installation',
-  },
-  {
-    name: 'Art S.',
-    photo: 'https://ui-avatars.com/api/?name=Art+S&background=D12027&color=fff&size=56',
-    stars: 5,
-    date: '2 years ago',
-    text: 'Professional, thorough, extremely neat and explained what they were doing and why. Excellent equipment, fairly priced, beautifully installed — and it works! I\'m a tough person to please but was absolutely delighted with the system and the installation.',
-    isLocalGuide: false,
-    services: 'AC installation · Heating system installation',
+    services: 'Full HVAC Installation',
+    text: "Outstanding experience from start to finish. Rich provided outstanding communication, scheduling, and overview of what was needed. Elvis, Joe, Robbie, Kris, Adrian, and John provided outstanding craftsmanship, attention to detail, cleanliness, and customer service. 5 stars doesn't do this company justice. Highly recommended.",
   },
 ];
 
@@ -74,7 +67,6 @@ export default function GoogleReviews() {
     }, 300);
   }, [isAnimating, total]);
 
-  // Auto-advance every 6 seconds
   useEffect(() => {
     const t = setInterval(() => go('next'), 6000);
     return () => clearInterval(t);
@@ -85,8 +77,6 @@ export default function GoogleReviews() {
   return (
     <section className="py-12 sm:py-20 bg-white border-y border-slate-100" aria-labelledby="reviews-heading">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
           <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: '#D12027' }}>
             Google Reviews
@@ -106,15 +96,12 @@ export default function GoogleReviews() {
               ))}
             </span>
             <span className="font-bold text-slate-800">4.9</span>
-            <span className="text-slate-500">· 194 Google Reviews</span>
+            <span className="text-slate-500">� 194 Google Reviews</span>
             <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
           </a>
         </div>
 
-        {/* Card */}
-        <div
-          className={`transition-all duration-300 ${isAnimating ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}
-        >
+        <div className={`transition-all duration-300 ${isAnimating ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
           <a
             href={GOOGLE_MAPS_URL}
             target="_blank"
@@ -122,34 +109,22 @@ export default function GoogleReviews() {
             className="block bg-white rounded-2xl p-5 sm:p-8 md:p-10 shadow-md border border-slate-100 hover:shadow-lg transition-shadow"
             aria-label={`${r.name}'s Google review`}
           >
-            {/* Quote mark */}
             <div className="text-4xl sm:text-6xl leading-none font-serif mb-3 select-none" style={{ color: '#D12027' }} aria-hidden="true">
-              "
+              &ldquo;
             </div>
-
-            {/* Review text — full, no truncation */}
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-5">
-              {r.text}
-            </p>
-
-            {/* Services tag */}
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-5">{r.text}</p>
             {r.services && (
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-6">
-                {r.services}
-              </p>
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-6">{r.services}</p>
             )}
-
-            {/* Reviewer info */}
             <div className="flex items-center gap-3">
               <img
                 src={r.photo}
-                alt={`${r.name} — verified Google customer`}
+                alt={`${r.name} � verified Google customer`}
                 className="w-10 h-10 sm:w-14 sm:h-14 rounded-full object-cover ring-2 ring-slate-100 flex-shrink-0"
                 loading="lazy"
                 decoding="async"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src =
-                    `https://ui-avatars.com/api/?name=${encodeURIComponent(r.name)}&background=D12027&color=fff&size=56`;
+                  (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(r.name)}&background=D12027&color=fff&size=56`;
                 }}
               />
               <div className="flex-1 min-w-0">
@@ -160,11 +135,10 @@ export default function GoogleReviews() {
                       <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" aria-hidden="true" />
                     ))}
                   </div>
-                  {r.isLocalGuide && <span className="text-xs text-slate-400">· Local Guide</span>}
-                  <span className="text-xs text-slate-400">· {r.date}</span>
+                  {r.isLocalGuide && <span className="text-xs text-slate-400">� Local Guide</span>}
+                  <span className="text-xs text-slate-400">� {r.date}</span>
                 </div>
               </div>
-              {/* Google G */}
               <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 48 48" aria-hidden="true">
                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                 <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
@@ -175,28 +149,15 @@ export default function GoogleReviews() {
           </a>
         </div>
 
-        {/* Controls */}
         <div className="flex items-center justify-center gap-6 mt-10">
-          {/* Prev */}
-          <button
-            onClick={() => go('prev')}
-            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-500 hover:border-[#D12027] hover:text-[#D12027] transition-colors"
-            aria-label="Previous review"
-          >
+          <button onClick={() => go('prev')} className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-500 hover:border-[#D12027] hover:text-[#D12027] transition-colors" aria-label="Previous review">
             <ChevronLeft className="w-5 h-5" aria-hidden="true" />
           </button>
-
-          {/* Dots */}
           <div className="flex gap-2.5" role="tablist" aria-label="Review navigation">
             {REVIEWS.map((rev, i) => (
               <button
                 key={rev.name}
-                onClick={() => {
-                  if (!isAnimating) {
-                    setIsAnimating(true);
-                    setTimeout(() => { setCurrent(i); setIsAnimating(false); }, 300);
-                  }
-                }}
+                onClick={() => { if (!isAnimating) { setIsAnimating(true); setTimeout(() => { setCurrent(i); setIsAnimating(false); }, 300); } }}
                 className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? 'scale-125' : 'bg-slate-200'}`}
                 style={i === current ? { backgroundColor: '#D12027' } : undefined}
                 role="tab"
@@ -205,35 +166,19 @@ export default function GoogleReviews() {
               />
             ))}
           </div>
-
-          {/* Next */}
-          <button
-            onClick={() => go('next')}
-            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-500 hover:border-[#D12027] hover:text-[#D12027] transition-colors"
-            aria-label="Next review"
-          >
+          <button onClick={() => go('next')} className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-500 hover:border-[#D12027] hover:text-[#D12027] transition-colors" aria-label="Next review">
             <ChevronRight className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
 
-        {/* Progress bar */}
         <div className="mt-6 max-w-xs mx-auto h-1 bg-slate-100 rounded-full overflow-hidden">
           <div
             key={current}
             className="h-full rounded-full origin-left"
-            style={{
-              backgroundColor: '#D12027',
-              animation: 'progress-bar 6s linear forwards',
-            }}
+            style={{ backgroundColor: '#D12027', animation: 'progress-bar 6s linear forwards' }}
           />
         </div>
-
-        <style>{`
-          @keyframes progress-bar {
-            from { width: 0%; }
-            to   { width: 100%; }
-          }
-        `}</style>
+        <style>{`@keyframes progress-bar { from { width: 0%; } to { width: 100%; } }`}</style>
       </div>
     </section>
   );
