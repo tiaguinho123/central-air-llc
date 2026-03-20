@@ -45,3 +45,8 @@ button, a {
   display: inline-flex;
   align-items: center;
 }
+
+/* Hamburger: hide on md+ screens */
+@media (min-width: 768px) {
+  .hamburger-btn { display: none !important; }
+}

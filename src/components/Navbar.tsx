@@ -112,7 +112,7 @@ export default function Navbar() {
 
           {/* ─── Mobile Toggle ─── */}
           <button
-            className="md:hidden p-2 text-slate-700"
+            className="hamburger-btn md:hidden p-2 text-slate-700"
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
